@@ -1,5 +1,5 @@
 class RestaurantsController < ApplicationController
-  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_action :set_restaurant, only: [:show, :edit, :update, :destroy, :chef]
 
   # GET /restaurants
   # GET /restaurants.json
@@ -14,6 +14,10 @@ class RestaurantsController < ApplicationController
     # -> views/restaurants
     # and renders a template with the same name as the action
     # -> top.html.erb
+  end
+
+  def chef
+    @chef = @restaurant.chef
   end
 
   # GET /restaurants/1
