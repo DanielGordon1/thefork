@@ -7,6 +7,15 @@ class RestaurantsController < ApplicationController
     @restaurants = Restaurant.all
   end
 
+  def top
+    @restaurants = Restaurant.where('stars > 4')
+    # By default rails always renders a template found
+    # in a folder with the same name as  the controller
+    # -> views/restaurants
+    # and renders a template with the same name as the action
+    # -> top.html.erb
+  end
+
   # GET /restaurants/1
   # GET /restaurants/1.json
   def show
