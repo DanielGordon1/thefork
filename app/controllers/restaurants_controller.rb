@@ -4,6 +4,8 @@ class RestaurantsController < ApplicationController
   # GET /restaurants
   # GET /restaurants.json
   def index
+    # I am the owner of mcDonalds
+    # @restaurants = Restaurant.where(user: current_user)
     @restaurants = Restaurant.all
   end
 
@@ -37,12 +39,18 @@ class RestaurantsController < ApplicationController
 
   def create
     @restaurant = Restaurant.new(restaurant_params)
-    # Lets add this in again later
+    if @restaurant.save
+      redirect_to restaurants_path # -> new http request cycle
+    else
+      render :new #-> fetch this view
+      # we send the @restaurant with errors inside to the view
+    end
   end
 
   # PATCH/PUT /restaurants/1
   # PATCH/PUT /restaurants/1.json
   def update
+
     # lets fix this later
   end
 

@@ -11,5 +11,11 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
 
+  resources :reviews, only: [:show, :destroy, :edit, :update]
+
+  namespace :admin do
+    resources :restaurants, only: [:index]
+  end
+
   # get 'restaurants/top', to: 'restaurants#top', as: :top_restaurants
 end
